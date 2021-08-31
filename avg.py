@@ -12,7 +12,7 @@ for i in range(10):
 print("The average for the 10 grades is:", gradeTotal/count)
 
 # %%
-# throw exception for values out of 0-100 range
+# throw exception for not integers
 count = 0
 grade = []
 gradeTotal = 0
@@ -33,7 +33,7 @@ grade = float(input(i))
 print(grade, i)
 # %%
 
-# throw exception for values out of 0-100 range
+# throw exception for non-integer values
 count = 0
 grade = []
 gradeTotal = 0
