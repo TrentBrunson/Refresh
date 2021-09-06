@@ -9,5 +9,21 @@
     # duplicate letters
 
 #%%
-# bonus - reject if string has spaces or special chars
-# try-except
+choice = "Y"
+
+while choice.upper() == "Y":
+    print("This program will determine if you have an abdecarian word.")
+    try:
+        userWord = input("Enter you word:")
+        for i in range(len(userWord) - 1):
+            if userWord[i] > userWord[i + 1]:
+                alpha = False
+            else: alpha = True
+            if alpha == False:
+                print("Your {userWord} does not have its letters in alphabetical order.")
+            else:
+                print("Your {userWord} has all of its letters in alphabetical order!")
+    except ValueError:
+        print("Input words with letters only.\n")
+
+    choice = input("Would you like to try again? (Y/N) ") 
