@@ -10,10 +10,10 @@ while choice.lower() == "y":
     is_valid = True
     while is_valid == True:
         monthly_investment = float(input("Enter monthly investment:\t"))
-        if monthly_investment > 0 and monthly_investment <= 1000:
+        if monthly_investment > 0 and monthly_investment <= 10000:
             is_valid = False
         else:
-            print("Entry must be greater than 0. Please try again.")    
+            print("Entry must be greater than 0 and less than 10,000. Please try again.")    
 
     is_valid = True
     while is_valid == True:
