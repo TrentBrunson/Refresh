@@ -19,7 +19,7 @@ def get_int(prompt, low, high):
 def main():
         choice = "Y"
         while choice.upper() == "Y":
-            valid_number = get_float("Enter number: ", 0, 10000)
+            valid_number = get_float("Enter number: ", 0, 1000)
             print("Valid number = ", valid_number, "\n")
             valid_integer = get_int("Enter integer: ", 0, 50)
             print("Valid integer = ", valid_integer, "\n")
