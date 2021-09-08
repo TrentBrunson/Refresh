@@ -15,11 +15,14 @@ choice = "Y"
 while choice.upper() == "Y":
     print("This program will determine if you have an abecedarian word.")
     try:
+        i = 0
         userWord = input("Enter you word:\n")
         for i in range(len(userWord) - 1):
             if userWord[i] > userWord[i + 1]:
                 alpha = False
+                break
             else: alpha = True
+            # print(alpha) - logic check; need breakline to exit when false
         if alpha == False:
             print(f"Your word '{userWord}' does not have its letters in alphabetical order.")
         else:
