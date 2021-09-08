@@ -13,7 +13,7 @@
 # choice = "Y"
 
 # while choice.upper() == "Y":
-#     print("This program will determine if you have an abdecarian word.")
+#     print("This program will determine if you have an abecedarian word.")
 #     try:
 #         userWord = input("Enter you word:\n")
 #         for i in range(len(userWord) - 1):
@@ -33,7 +33,7 @@
 choice = "Y"
 
 while choice.upper() == "Y":
-    print("This program will determine if you have an abdecarian word.")
+    print("This program will determine if you have an abecedarian word.")
     try:
         userWord = input("Enter you word:\n")
     # compare input to new sorted work
