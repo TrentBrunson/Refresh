@@ -18,11 +18,10 @@ print ("The Count of \"E\" in '" + ssinput + "' is: " + str(count))
 
 print("Welcome to the Sesame Street letter counter!!!\nToday we are counting the letter E!\n\n")
 
-ssinput = input("What word(s) would you like me to count for you?\n")
-ssinput = ssinput.lower()
+ssinput = input("What word(s) would you like me to count for you?\n").lower()
 count = ssinput.count('e')
 
-print ("The Count of \"E\" in '" + ssinput + "' is :" + str(count))
+print ("The Count of \"E\" in '" + ssinput + "' is: " + str(count))
 
 # %%
 # this time ask for user input on what letter to count
