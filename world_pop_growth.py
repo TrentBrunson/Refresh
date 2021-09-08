@@ -2,8 +2,17 @@
 # Provide population forecast
 
 print(
-    f"***********************************************************************\n"
-    f"This program calculates weekly based on user inputs for wage and hours.\n"
-    f"***********************************************************************\n\n"
+    f"************************************************\n"
+    f"This program calculates world population growth.\n"
+    f"************************************************\n\n"
 )
 
+newWorldPop, worldPop = 7000000000
+year = 2011
+
+while newWorldPop < 8000000000:
+    newWorldPop = newWorldPop * 1.1
+    year += 1
+    print(f"The population in {year} is {newWorldPop:.0f}")
+
+print(f"The world's population will exceed 8,000,000,000 in {year}")
