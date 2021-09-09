@@ -9,6 +9,9 @@ def answer_check(x):
 # If the birth year is 1980, at what age/in what year
 # will the individual be able to make this statement?
 
+print(f"This program figures out when a person born in 1980 can ask/state:\n"
+    f"When will the sqaure of my age equal the year?\n"
+)
 # quadratic equation if x^2
 # x = age
 # x^2 = the current year
@@ -26,7 +29,8 @@ year = [x,x2]
 answer = [i for i in year if i > 0] #list comprehension
 answer, *rest = answer #extract the value from the list
 answer = int(answer) 
-print(answer)
+
+print(f"In {answer**2}, I will be {answer}!!!\n")
 
 # # take only the positive value - no negative ages!!  Convert list to int with lamda f(x)
 # answer = list(filter(lambda yr: (yr > 0), year)) # lamda f(x)
@@ -34,10 +38,8 @@ print(answer)
 # answer = int(answer)
 # print(answer)
 
-
-# %%
 print(f"The person born in 1980 will be {answer} year old in {1980 + answer},\n"
-    f"when their age ({answer}) sqaured will be the same as the year ({1980 + answer})"
+    f"when their age ({answer}) sqaured will be the same as the year ({1980 + answer})."
     )
 
 # %%
