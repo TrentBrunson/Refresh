@@ -1,4 +1,16 @@
 #%%
+#!/usr/bin/env python3#!/usr/bin/env python3
+
+# AUTHOR:     Trent Brunson
+# COURSE:     ANLY 615
+# PROGRAM:    Abecedarian
+# PURPOSE:    Determine if the letters of a word are in alphabetical order.
+# INPUT:      user word
+# PROCESS:    treat the input as a list of characters
+# OUTPUT:     yes or no, the word is an abecedarian word
+# HONOR CODE: On my honor, as an Aggie, I have neither given 
+#             nor received unauthorized aid on this academic work.
+
 # find words that have their letters arranged alphabetically
 # supposedly less than 1k words like this in English
 
@@ -9,7 +21,7 @@
     # duplicate letters
 
 #%%
-# # attempt with loop
+# attempt with loop
 choice = "Y"
 
 while choice.upper() == "Y":

@@ -1,3 +1,15 @@
+#!/usr/bin/env python3
+
+# AUTHOR:     Trent Brunson
+# COURSE:     ANLY 615
+# PROGRAM:    Triathlon fuel consumption
+# PURPOSE:    This will return how many calories are burned (& weight lost) for a trio of exercises. 
+# INPUT:      Times for each of 3 activities: swim, bike & run.
+# PROCESS:    Use given values for caloric burn per activity.
+# OUTPUT:     Caloried burned and weight lost.
+# HONOR CODE: On my honor, as an Aggie, I have neither given 
+#             nor received unauthorized aid on this academic work.
+
 """
 This program takes a user input for the coefficient of restitution (meaning to what percentage
 will the object bounce back to the original height of the drop).  It uses this to output how 

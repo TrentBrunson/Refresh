@@ -1,4 +1,16 @@
 #%%
+#!/usr/bin/env python3
+
+# AUTHOR:     Trent Brunson
+# COURSE:     ANLY 615
+# PROGRAM:    Leap Year
+# PURPOSE:    Determine if a given year is a leap year.
+# INPUT:      User year.
+# PROCESS:    Step through the logic of leap year determination with if statements.
+# OUTPUT:     A statement saying whether the input is a leap year or not.
+# HONOR CODE: On my honor, as an Aggie, I have neither given 
+#             nor received unauthorized aid on this academic work.
+
 # code snippet to take user input and return if a leap year or not
 
 # leap years have no remainder if divided by 4

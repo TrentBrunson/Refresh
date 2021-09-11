@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # light bulb #6
 '''
 1, 2,3, & 6 - leaves light off

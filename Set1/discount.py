@@ -1,4 +1,16 @@
 #%%
+#!/usr/bin/env python3
+
+# AUTHOR:     Trent Brunson
+# COURSE:     ANLY 615
+# PROGRAM:    Discount calculator
+# PURPOSE:    Calculate a BOGO 1/2 sale
+# INPUT:      Two prices
+# PROCESS:    ID the lower value and discount it 50%
+# OUTPUT:     Total price
+# HONOR CODE: On my honor, as an Aggie, I have neither given 
+#             nor received unauthorized aid on this academic work.
+
 # BOGO for only 2 pairs of shoes
 
 pair1 = float(input("Enter the price of the first pair of shoes: "))

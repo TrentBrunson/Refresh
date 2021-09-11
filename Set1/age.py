@@ -1,9 +1,16 @@
-# check answer
-def answer_check(x):
-    final = x**2 - x - 1980
-    return final
-
 # %%
+#!/usr/bin/env python3
+
+# AUTHOR:     Trent Brunson
+# COURSE:     ANLY 615
+# PROGRAM:    Sqaured Age Riddle
+# PURPOSE:    Find the age and year given a series of parameters.
+# INPUT:      None
+# PROCESS:    Solve the quadratic equation
+# OUTPUT:     Age and year
+# HONOR CODE: On my honor, as an Aggie, I have neither given 
+#             nor received unauthorized aid on this academic work.
+
 # figure out the age of someone when they say 
 # "I will be x years old in the year x squared."
 # If the birth year is 1980, at what age/in what year
@@ -27,18 +34,18 @@ year = [x,x2]
 
 # take only the positive value - no negative ages!!
 answer = [i for i in year if i > 0] #list comprehension
-answer, *rest = answer #extract the value from the list
+answer, *throwAway = answer #extract the value from the list
 answer = int(answer) 
 
 print(f"In {answer**2}, I will be {answer}!!!\n")
 
 # # take only the positive value - no negative ages!!  Convert list to int with lamda f(x)
 # answer = list(filter(lambda yr: (yr > 0), year)) # lamda f(x)
-# answer, *rest = answer
+# answer, *throwAway = answer
 # answer = int(answer)
 # print(answer)
 
-print(f"The person born in 1980 will be {answer} year old in {1980 + answer},\n"
+print(f"The person born in 1980 will be {answer} years old in {1980 + answer},\n"
     f"when their age ({answer}) sqaured will be the same as the year ({1980 + answer})."
     )
 
