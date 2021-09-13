@@ -18,18 +18,37 @@ endWeight = 300
 weightTable = {}
 
 for startWeight in range(startWeight, endWeight + 10, 10):
-    weightTable[startWeight] = startWeight/2.2046
+    weightTable[startWeight] = round(startWeight/2.2046, 3)
 
-print(weightTable)
+print(
+    f"This is a weight conversion table for pounds to kilos (100-300lbs):\n\n"
+    f"Pounds\tKilos"
+)
+for key, value in weightTable.items():
+    print(
+        f"{key}\t"
+        f"{value}"
+    )
+
+# list comprehension printing
+# [print(key,"\t",value) for key, value in weightTable.items()]
 #%%
 # bonus ask for input on which way to switch
 
 weights = []
 
-for weight in range(100, 300):
-    if weight % 10 == 0:
+for weight in range(100, 300 + 10, 10):
         weights.append(weight)
 
 for weight in weights:
     print("Lbs: " + str(weight).ljust(5) + " Kg: " + str(round( (weight / 2.2046), 2) ).ljust(8))
+# %%
+# A dictionary of student names and their score
+student_score = {   'Ritika': 5,
+                    'Sam': 7, 
+                    'John': 10, 
+                    'Aadi': 8}
+# Iterate over the key-value pairs of a dictionary 
+# using list comprehension and print them
+[print(key,':',value) for key, value in student_score.items()]
 # %%
