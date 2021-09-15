@@ -1,4 +1,4 @@
-'''5.	Crayon Colors - The file "Colors.txt   Download Colors.txt" 
+'''5.	Crayon Colors - The file "Colors.txt" 
 contains the names of 123 crayon colors with one color per line. 
 Write a program that asks the user to enter a letter of the alphabet 
 and then displays all the colors that start with that letter. 
