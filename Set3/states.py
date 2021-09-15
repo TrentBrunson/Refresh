@@ -53,7 +53,6 @@ def getStates():
         for state in stateList:
             length = countConsonants(state)
             l.append(length)
-            # newlist.append(group)
         temp = list(zip(l, stateList))
         temp.sort()
         statesSorted = [item[1] for item in temp]
