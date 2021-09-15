@@ -26,27 +26,32 @@ and one to display the output.
 # HONOR CODE: On my honor, as an Aggie, I have neither given 
 #             nor received unauthorized aid on this academic work.
 #%%
-def getColor(userColor):
-    color = str(input("Enter a letter of the alphabet:"))
-    return color
+def getLetter():
+    letter = str(input("Enter a letter of the alphabet:")).upper()
+    return letter
 
-def crayonFile(letter, crayonList):
-    with ("Colors.txt"):
-        newList = []
-        file = "Colors.txt"
-        if letter in file.():
-            newList.append() 
-    return crayonList
+def getColors(ltr):
+    with open("data/Colors.txt") as file:
+        word = ""
+        newList, colorList = [], []
+        for line in file:
+            line = line.replace("\n", "")
+            colorList.append(line)
+        for word in colorList:
+            if word.startswith(ltr):
+                newList.append(word)
+    return newList
 
-def displayAnswer():
-    print()
+def displayAnswer(letter, newList):
+    print(f"Here are the colors that start with '{letter}':")
+    for x in range(len(newList)):
+        print(f'{newList[x]}')
 
 def main():
-    ltr = ""
-    colorList = []
-    getColor(ltr)
-    crayonFile(ltr, colorList)
-    displayAnswer()
+    letter = getLetter()
+    newList = getColors(letter)
+    displayAnswer(letter, newList)
 
 if __name__ == "__main__":
     main()
+# %%
