@@ -8,6 +8,7 @@ For example, "racecar," "Madam, I'm Adam," and "Anna."
     1.	What if odd
         1.	splitpoint = for i in range (len(string) % 2)
         2.	else: - no need, line above works for both odd and even
+        3. or count backwards form end of list
     2.	assign second string to a list
 3.	reverse order for second half
 
