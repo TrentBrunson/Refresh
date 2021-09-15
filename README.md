@@ -1,2 +1,2 @@
 # Refresh
-Python quick scrips
+Python quick scripts
