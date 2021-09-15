@@ -44,9 +44,7 @@ def countConsonants(stateName):
 # transform text file to a list of strings
 def getStates():
     state = ""
-    statesSorted = []
-    l = []
-    stateList = []
+    statesSorted, l, stateList = [], [], []
     with open("data/States.txt") as file:        
         for line in file:
             line = line.replace("\n", "")
