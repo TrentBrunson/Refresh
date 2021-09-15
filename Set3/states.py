@@ -20,7 +20,7 @@ the number of consonants in a word.
 #             nor received unauthorized aid on this academic work.
 #%%
 def welcome():
-    print(f"This program reorders a list of states by the number of "
+    print(f"This program reorders a list of states by the number of\n"
         f"consonants in the name and displays them in ascending order.\n"
     )
 
@@ -57,16 +57,11 @@ def getStates():
         temp = list(zip(l, stateList))
         temp.sort()
         statesSorted = [item[1] for item in temp]
-
-        print(f"This is {statesSorted},\n\n{temp}\n\n\n")
-        # sort the group list of lists
-        # key set to second item in list of lists
-        # use lamda function to iterate through list
-        # group.sort(key=lambda x: int(x[1]))
     return statesSorted
 
 def output(statesSorted):
-    print(f"Here is the newly ordered list by number of consonants:\n {statesSorted}")
+    print(f"Here is the new list of states ordered by number of consonants:")
+    print(*statesSorted, sep = "\n")
 
 def main():
     welcome()
