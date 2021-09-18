@@ -15,46 +15,74 @@ Pseudocode
 Write a program that asks the user to enter a number with 27 digits or less. 
 The convert that number into a set of three-digit numbers and associated 
 place values. Display the results to the user.
-
-1. get input and convert to string
-2. get length of string
-3. loop through number string
-    a. how many 3-digit segments are ther? 
-    b. howbigofaloop = n/3
-    c. if condition:
-        elif:
-        elif:
-        else:
-    d. edge case: 0?
-        if num == 0
-            return "zero"
-        while foo > 0:
-            if num % 1000 != 0
-if some length > 24
-    septillion = True
-
-            i += 1
 """
 
 choice = "Y"
-while choice == "Y":
-
-    if number == 0
-        return "Zero"
-    elif:
+while choice.upper() == "Y":
     number = int(input("Enter your number: "))
     numberStr = str(number)
-    print(len(numberStr))
+    length = len(numberStr)
+    print(length)
+
+    if number <= 0:
+        print("Enter a number greater than zero")
+    else:
+        for i in range (length//3):
+            i = 3
+
     
     units = [" ", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion"]
 
     # numberslicer = numberStr[-3:]
     # print(numberslicer)
-    numberslicer = numberStr[-3:]
-    print(numberslicer)
+    numberslicer = [numberStr[i : i+3] for i in range(0, length, 3)]
+    backwards = []
+    step = -3
+    while i < length:
+        temp = numberStr[::-1]
+        backwards.append(temp)
+        i += 3
+    print(numberslicer, backwards)
 
     choice = input("Would you like to enter another number? (Y/N)")
 
 
 
+# %%
+x = [1,2,3,4,5,6,7,8,9]
+n=3
+test = zip(*[iter(x)]*3)
+test2 = map(None, *[iter(x)]*3)
+print(test, test2)
+# %%
+l = range(9)
+a = zip(*([l]*3))
+print(a)
+# %%
+line = '1234567890'
+n = 3
+b = [line[i:i+n] for i in range(0, len(line), n)]
+print(b)
+# %%
+number = int(input("Enter your number: "))
+numberStr = str(number)
+length = len(numberStr)
+print(length)
+
+if number <= 0:
+    print("Enter a number greater than zero")
+
+print(reverse)
+backwards = []
+while i < length:
+    step = 0
+    temp = reverse[step:3]
+    backwards.append(temp)
+    step += 3
+    i += 3
+print(numberslicer, backwards)
+# %%
+19%10
+# %%
+(12345678912//1000000000) % 100
 # %%
