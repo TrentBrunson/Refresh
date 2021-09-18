@@ -11,11 +11,12 @@ the number of consonants in a word.
 
 # AUTHOR:     Trent Brunson
 # COURSE:     ANLY 615
-# PROGRAM:    Letter e counter
-# PURPOSE:    Count the letter e in a string.
-# INPUT:      user string of characters
-# PROCESS:    treat the input string as a list of characters
-# OUTPUT:     number of e's in the input
+# PROGRAM:    State sorter
+# PURPOSE:    Sort states by the number of consonants in their name.
+# INPUT:      Text file ordered by date of admission to the union.
+# PROCESS:    Get input; identify consonants; count consonants; create list of lists;
+#             sort list of lists.
+# OUTPUT:     Display new order on screen.
 # HONOR CODE: On my honor, as an Aggie, I have neither given 
 #             nor received unauthorized aid on this academic work.
 #%%
@@ -43,9 +44,7 @@ def countConsonants(stateName):
 # transform text file to a list of strings
 def getStates():
     state = ""
-    statesSorted = []
-    l = []
-    stateList = []
+    statesSorted, l, stateList = [], [], []
     with open("data/States.txt") as file:        
         for line in file:
             line = line.replace("\n", "")
@@ -53,7 +52,6 @@ def getStates():
         for state in stateList:
             length = countConsonants(state)
             l.append(length)
-            # newlist.append(group)
         temp = list(zip(l, stateList))
         temp.sort()
         statesSorted = [item[1] for item in temp]
