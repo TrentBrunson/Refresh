@@ -16,24 +16,35 @@ Write a program that asks the user to enter a number with 27 digits or less.
 The convert that number into a set of three-digit numbers and associated 
 place values. Display the results to the user.
 """
-
+#%%
 choice = "Y"
 while choice.upper() == "Y":
-    units = "septillion,sextillion,septillion,quadrillion,trillion,billion,million,thousand,".split(',')
+    # units = "septillion,sextillion,septillion,quadrillion,trillion,billion,million,thousand,".split(',')
+    units = " ,thousand,million,billion,trillion,quadrillion,quintillion,sextillion,septillion,".split(',')
     number = int(input("Enter your number: "))
     numberStr = str(number)
     length = len(numberStr)
+    thou = 1000
+    n = 0
+    i=1
     if length > 27:
         print("What are you thinking?  Input a number less than an octillion!!")
         break
-    print(length)
-    thou = 1000
-
     if number <= 0:
         print("Enter a number greater than zero")
-    elif number <=3:
+    elif length <=3:
         print(f"Your number is: {number}")
+        break
     
+    while length > 0:
+        x = number // 10 ** (i * 3)
+        print(f"{x}\t{units[round(length/3)-1]}\n")
+        i += 1
+        n+=1
+        length -=3
+    choice = input("Would you like to enter another number? (Y/N)")
+
+#%%
     # loopLength = length / 3
 
     # while length > 0:
@@ -41,30 +52,31 @@ while choice.upper() == "Y":
     #     out.append()
     #     length -= 3
         
-    wordOut, numOut = [], []
-    nList = []
+    # wordOut, numOut = [], []
+    # nList = []
 
-    out = number // (thou * 7)
+    # out = number // (thou * 7)
 
-    if (number // thou ** 9) != 0:
-        print(f"{(number // thou ** 9)}\tseptillion\n")
-        nList = number[3:]
-    if (nList // thou ** 8) != 0:
-        print(f"{(number // thou ** 8)}\tsextillion\n")
-    if (number // thou ** 7) != 0:
-        print(f"{(number // thou ** 7)}\tquintillion\n")
-    if (number // thou ** 6) != 0:
-        print(f"{(number // thou ** 6)}\tquadrillion\n")
-    if (number // thou ** 5) != 0:
-        print(f"{(number // thou ** 5)}\ttrillion\n")
-    if (number // thou ** 4) != 0:
-        print(f"{(number // thou ** 4)}\tbillion\n")
-    if (number // thou ** 3) != 0:
-        print(f"{(number // thou ** 3)}\tmillion\n")
-    if (number // thou ** 2) != 0:
-        print(f"{(number // thou ** 2)}\tthousand\n")
-    if (number // thou) != 0:
-        print(f"{(number // thou)}\t\n")
+    # if (number // thou ** 9) != 0:
+    #     print(f"{(number // thou ** 9)}\tseptillion\n")
+    #     nList = numberStr[3:]
+    #     print(nList)
+    # if (nList // thou ** 8) != 0:
+    #     print(f"{(number // thou ** 8)}\tsextillion\n")
+    # if (number // thou ** 7) != 0:
+    #     print(f"{(number // thou ** 7)}\tquintillion\n")
+    # if (number // thou ** 6) != 0:
+    #     print(f"{(number // thou ** 6)}\tquadrillion\n")
+    # if (number // thou ** 5) != 0:
+    #     print(f"{(number // thou ** 5)}\ttrillion\n")
+    # if (number // thou ** 4) != 0:
+    #     print(f"{(number // thou ** 4)}\tbillion\n")
+    # if (number // thou ** 3) != 0:
+    #     print(f"{(number // thou ** 3)}\tmillion\n")
+    # if (number // thou ** 2) != 0:
+    #     print(f"{(number // thou ** 2)}\tthousand\n")
+    # if (number // thou) != 0:
+    #     print(f"{(number // thou)}\t\n")
 
 
     # numberslicer = numberStr[-3:]
@@ -77,11 +89,6 @@ while choice.upper() == "Y":
     #     backwards.append(temp)
     #     i += 3
     # print(numberslicer, backwards)
-
-    choice = input("Would you like to enter another number? (Y/N)")
-
-
-
 # %%
 x = [1,2,3,4,5,6,7,8,9]
 n=3
@@ -131,4 +138,21 @@ print("The last N elements of list are : " + str(res))
 
 trunc = test_list[:len(test_list)-3]
 print(*trunc)
+# %%
+for i in range(length) > 0:
+    x = number % 10 ** (i * 3)
+    print(f"{x}\t{units[i]}\n")
+    i -= 3
+# %%
+number = int(input("Enter your number: "))
+x = number % 10 ** (1 * 3)
+print(x)
+# %%
+123456 % 10 ** (2 * 3)
+
+# %%
+units = " ,thousand,million,billion,trillion,quadrillion,quintillion,sextillion,septillion,".split(',')
+print(*units)
+# %%
+
 # %%
