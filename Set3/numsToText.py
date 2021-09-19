@@ -83,7 +83,7 @@ def get_num():
 
         print(f"Your number: {number}")
         if length > 27:
-            print("What are you thinking?  Input a number less than an octillion!!")
+            print("What are you doing?  Trying to crash the system?  Input a number less than an octillion!!")
             continue
         if number <= 0:
             print("Enter a number greater than zero.")
