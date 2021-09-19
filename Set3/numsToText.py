@@ -22,11 +22,12 @@ while choice.upper() == "Y":
     # units = "septillion,sextillion,septillion,quadrillion,trillion,billion,million,thousand,".split(',')
     units = " ,thousand,million,billion,trillion,quadrillion,quintillion,sextillion,septillion,".split(',')
     number = int(input("Enter your number: "))
-    numberStr = str(number)
-    length = len(numberStr)
+    numberList = list(str(number))
+    length = len(numberList)
+    print(length)
     thou = 1000
     n = 0
-    i=1
+    i = 0
 
     print(f"Your number: {number}")
     if length > 27:
@@ -38,37 +39,31 @@ while choice.upper() == "Y":
         print(f"Your number is: {number}")
         break
     
-    # List manipulation
-    numberStr = [1,2,3,4,5,6,7]
-    length = len(numberStr)
-    subList = [numberStr[n:n+3] for n in range(0, len(numberStr), 3)]
-    revL = num
-    print(numberStr,length, "\n", subList, "\n", len(subList))
-    
+    # List manipulation    
+    numberList.reverse()  # reverse the string
+    # group the string in groups of 3s in a list of lists
+    subList = [numberList[n:n+3] for n in range(0, len(numberList), 3)]
+    # print(numberList,length, "\n", subList, "\n", len(subList), subList)
+    # reverse the order of the sublists
+    subList = [n [::-1] for n in subList][::-1]
+    # print(subList)
 
     while length > 0:
         x = number // 10 ** (round(length/3) * 3)
-        print(numberStr,x)
-        print(f"{revL[len(subList)]}\t{units[round(length/3)]}\n")
+        # print()
+        # print(numberList,x)
+        # print(f"{subList[i]}\t{units[round(length/3)]}\n")
+        # print(''.join(str(j) for j in subList[i]))
+        print(f"{''.join(str(j) for j in subList[i])}\t{units[((length-1)//3)]}\n")
+
         # numberStr = numberStr[length:]
-        # i += 1
-        n+=3
+        i += 1
+        n += 3
         length -=3
+        print(length, i, n)
     choice = input("Would you like to enter another number? (Y/N)")
 
 #%%
-    # loopLength = length / 3
-
-    # while length > 0:
-    #     out = number // 10000
-    #     out.append()
-    #     length -= 3
-        
-    # wordOut, numOut = [], []
-    # nList = []
-
-    # out = number // (thou * 7)
-
     # if (number // thou ** 9) != 0:
     #     print(f"{(number // thou ** 9)}\tseptillion\n")
     #     nList = numberStr[3:]
@@ -169,4 +164,19 @@ subList = [numberStr[n:n+3] for n in range(0, len(numberStr), 3)]
 print(numberStr,length, "\n", subList, "\n", len(subList), subList)
 subList = [elem [::-1] for elem in subList][::-1]
 print(subList)
+# %%
+numberStr = [1,2,3,4,5,6,7]
+# length = len(numberStr)
+numberStr.reverse()
+subList = [numberStr[n:n+3] for n in range(0, len(numberStr), 3)]
+print(numberStr,length, "\n", subList, "\n", len(subList), subList)
+subList = [n [::-1] for n in subList][::-1]
+print(*subList[2])
+print(''.join(str(i) for i in subList[2]))
+# subList = []
+# %%
+num = 12345679
+type(num)
+num1 = list(str(num))
+print(num1)
 # %%
