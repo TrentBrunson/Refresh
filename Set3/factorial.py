@@ -14,11 +14,57 @@ Write a different function to calculate the factorial for a number.
 
 # AUTHOR:     Trent Brunson
 # COURSE:     ANLY 615
-# PROGRAM:    Letter e counter
-# PURPOSE:    Count the letter e in a string.
-# INPUT:      user string of characters
-# PROCESS:    treat the input string as a list of characters
-# OUTPUT:     number of e's in the input
+# PROGRAM:    Factorial
+# PURPOSE:    Compute the factorial of positive number.
+# INPUT:      User number.
+# PROCESS:    Iterative: input * (input-1) while input > 0.
+# OUTPUT:     Factorial of user number
 # HONOR CODE: On my honor, as an Aggie, I have neither given 
 #             nor received unauthorized aid on this academic work.
 #%%
+choice = "Y"
+
+print("This program calculates the factorial of a number.")
+
+while choice.upper() == "Y":
+    num = int(input("Enter a positive whole number: "))
+    answer = 1
+    i = num
+
+    while i > 1:
+        answer *= (i)
+        i -= 1
+        print(i, num, answer)
+    
+    print(f"The factorial of {num} is: {answer}\n")
+    choice = input("Would you you like to try again? (Y/N)")
+#%%
+def number():
+    num = int(input("Enter a positive whole number: "))
+    return num
+
+def factorial(factorNum):
+    i = factorNum
+    while i > 1:
+        factorNum *= (i - 1)
+        i -= 1
+    return factorNum
+
+def output(numIn):
+    answer = factorial(numIn)    
+    print(f"The factorial of {numIn} is: {answer}\n")
+
+def main():
+    print("This program calculates the factorial of a number.")
+    choice = "Y"
+    while choice.upper() == "Y":
+        userNumber = number()
+        if userNumber < 0:
+            print("Let's do factorials of positive numbers only please.  Thank you.")
+            continue
+        output(userNumber)
+        choice = input("Would you you like to try again? (Y/N)")
+
+if __name__ == "__main__":
+    main()
+# %%
