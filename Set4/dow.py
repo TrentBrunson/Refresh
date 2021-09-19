@@ -31,6 +31,8 @@ Price/Earnings ratio in 2013: 17.48
 # iterate through rows of txt file and print to screen
 
 tickerList = []
+tickerLine1 = []
+row1, row2, row3 = [], [], []
 
 with open("data/dow.txt") as file:
     for line in file:
@@ -38,11 +40,23 @@ with open("data/dow.txt") as file:
         tickerList.append(currentline)
 
 # print(tickerList[0][1])
+print("Symbols for the Thirty DOW Stocks")
+for i in range(30):
+    tickerLine1.append(tickerList[i][1]) 
+for i in range(10):
+    row1.append(tickerList[i][1]) 
+for i in range(10, 20):
+    row2.append(tickerList[i][1]) 
+for i in range(20, 30):
+    row3.append(tickerList[i][1]) 
 
-for i in range(1, 4):
-    for j in range (10):
-        print(f"{tickerList[(j)*i][1]}\t")
-    print()
+# for i in range(10):
+print(*tickerLine1, sep="\t")
+print(*row1, sep="\t")
+print(*row2, sep="\t")
+print(*row3, sep="\t")
+
+# company = str(input("Enter a symbol: "))
 # %%
 rows = []
 fields = []
