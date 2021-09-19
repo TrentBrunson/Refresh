@@ -31,50 +31,43 @@ Price/Earnings ratio in 2013: 17.48
 # iterate through rows of txt file and print to screen
 
 tickerList = []
-tickerLine1 = []
-row1, row2, row3 = [], [], []
+tickerSymbol = []
+DOWdict = {}
+choice = "Y"
 
 with open("data/dow.txt") as file:
     for line in file:
-        currentline = line.split(',')
-        tickerList.append(currentline)
+        currentLine = line.split(',')
+        tickerList.append(currentLine)
 
-# print(tickerList[0][1])
 print("Symbols for the Thirty DOW Stocks")
 for i in range(30):
-    tickerLine1.append(tickerList[i][1]) 
-for i in range(10):
-    row1.append(tickerList[i][1]) 
-for i in range(10, 20):
-    row2.append(tickerList[i][1]) 
-for i in range(20, 30):
-    row3.append(tickerList[i][1]) 
+    tickerSymbol.append(tickerList[i][1]) 
 
-# for i in range(10):
-print(*tickerLine1, sep="\t")
-print(*row1, sep="\t")
-print(*row2, sep="\t")
-print(*row3, sep="\t")
+while choice.upper() == "Y":
+    print(*tickerSymbol[:10], sep="\t")
+    print(*tickerSymbol[10:20], sep="\t")
+    print(*tickerSymbol[-10:], sep="\t")
+    print()
 
-# company = str(input("Enter a symbol: "))
-# %%
-rows = []
-fields = []
+    DOWdict = dict(zip(tickerSymbol, tickerList))
 
-with open("data/dow.txt") as file:
-    for row in file:
-        rows.append(row)
-for row in rows[:5]:
-    for col in row:
-        print(f"{col}\t")
-    # print(tickerList)
-# %%
-tickerList = []
-
-with open("data/dow.txt") as file:
-    for line in file:
-        currentline = line.split(',')
-        tickerList.append(currentline)
-
-print(tickerList)
+    try:
+        company = str(input("Enter a symbol: ").upper())
+    except ValueError:
+        print("Only enter ticker symbols.\n\n")
+        continue
+    if company in tickerSymbol:
+        print(
+            f"Enter a symbol: {company}\n"
+            f"Company: {DOWdict[company][0]}\n"
+            f"Industry: {DOWdict[company][3]}\n"
+            f"Exhange: {DOWdict[company][2]}\n"
+            f"Growth in 2013: {((float(DOWdict[company][5])/float(DOWdict[company][4]))-1) * 100:.2f}%\n"
+            f"Price/Earnings ratio in 2013: {float(DOWdict[company][5])/float(DOWdict[company][6]):.2f}"
+        )
+    else:
+        print("Only enter ticker symbols from the menu.\n\n")
+        continue
+    choice = input("Would you like to make another selection? (Y/N) ")
 # %%
