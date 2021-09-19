@@ -27,20 +27,32 @@ while choice.upper() == "Y":
     thou = 1000
     n = 0
     i=1
+
+    print(f"Your number: {number}")
     if length > 27:
         print("What are you thinking?  Input a number less than an octillion!!")
         break
     if number <= 0:
-        print("Enter a number greater than zero")
+        print("Enter a number greater than zero.")
     elif length <=3:
         print(f"Your number is: {number}")
         break
     
+    # List manipulation
+    numberStr = [1,2,3,4,5,6,7]
+    length = len(numberStr)
+    subList = [numberStr[n:n+3] for n in range(0, len(numberStr), 3)]
+    revL = num
+    print(numberStr,length, "\n", subList, "\n", len(subList))
+    
+
     while length > 0:
-        x = number // 10 ** (i * 3)
-        print(f"{x}\t{units[round(length/3)-1]}\n")
-        i += 1
-        n+=1
+        x = number // 10 ** (round(length/3) * 3)
+        print(numberStr,x)
+        print(f"{revL[len(subList)]}\t{units[round(length/3)]}\n")
+        # numberStr = numberStr[length:]
+        # i += 1
+        n+=3
         length -=3
     choice = input("Would you like to enter another number? (Y/N)")
 
@@ -77,18 +89,6 @@ while choice.upper() == "Y":
     #     print(f"{(number // thou ** 2)}\tthousand\n")
     # if (number // thou) != 0:
     #     print(f"{(number // thou)}\t\n")
-
-
-    # numberslicer = numberStr[-3:]
-    # print(numberslicer)
-    # numberslicer = [numberStr[i : i+3] for i in range(0, length, 3)]
-    # backwards = []
-    # step = -3
-    # while i < length:
-    #     temp = numberStr[::-1]
-    #     backwards.append(temp)
-    #     i += 3
-    # print(numberslicer, backwards)
 # %%
 x = [1,2,3,4,5,6,7,8,9]
 n=3
@@ -104,19 +104,7 @@ line = '1234567890'
 n = 3
 b = [line[i:i+n] for i in range(0, len(line), n)]
 print(b)
-# %%
-19%10
-# %%
-(12345678912//1000000000)
-# %%
-12 // 100
-# %%
-12 % 100
-# %%
-units = "septillion,sextillion,septillion,quadrillion,trillion,billion,million,thousand,".split(',')
-print(units)
-testy = units[5]
-print(testy)
+
 # %%
 a = '1234567891012'
 n = 3
@@ -139,20 +127,46 @@ print("The last N elements of list are : " + str(res))
 trunc = test_list[:len(test_list)-3]
 print(*trunc)
 # %%
-for i in range(length) > 0:
-    x = number % 10 ** (i * 3)
-    print(f"{x}\t{units[i]}\n")
-    i -= 3
+n = 5
+mylist = [1,2,3,4,5,6,7,8,9]
+newlist = mylist[n:]
+print (newlist)
 # %%
-number = int(input("Enter your number: "))
-x = number % 10 ** (1 * 3)
-print(x)
+n = 5
+mylist = [1,2,3,4,5,6,7,8,9]
+del mylist[:n]
+print(mylist)
 # %%
-123456 % 10 ** (2 * 3)
-
+theList = list(range(10))
+l = len(theList)
+N = 3
+print(*theList)
+# len(theList)
+# revL = theList.reverse()
+subList = [theList[n:n+N] for n in range(0, len(theList), N)]
+print(theList,l, "\n", subList, "\n", len(subList))
 # %%
-units = " ,thousand,million,billion,trillion,quadrillion,quintillion,sextillion,septillion,".split(',')
-print(*units)
+7//3
 # %%
-
+10//3
+# %%
+3//3
+# %%
+2//3
+# %%
+4//3
+# %%
+4%3
+# %%
+5%3
+# %%
+6%3
+# %%
+numberStr = [1,2,3,4,5,6,7]
+length = len(numberStr)
+revL = numberStr.reverse()
+subList = [numberStr[n:n+3] for n in range(0, len(numberStr), 3)]
+print(numberStr,length, "\n", subList, "\n", len(subList), subList)
+subList = [elem [::-1] for elem in subList][::-1]
+print(subList)
 # %%
