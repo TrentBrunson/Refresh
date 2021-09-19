@@ -40,11 +40,11 @@ with open("data/dow.txt") as file:
         currentLine = line.split(',')
         tickerList.append(currentLine)
 
-print("Symbols for the Thirty DOW Stocks")
 for i in range(30):
     tickerSymbol.append(tickerList[i][1]) 
 
 while choice.upper() == "Y":
+    print("Symbols for the Thirty DOW Stocks")
     print(*tickerSymbol[:10], sep="\t")
     print(*tickerSymbol[10:20], sep="\t")
     print(*tickerSymbol[-10:], sep="\t")
@@ -57,14 +57,16 @@ while choice.upper() == "Y":
     except ValueError:
         print("Only enter ticker symbols.\n\n")
         continue
-    if company in tickerSymbol:
+    if company.upper() == "EXIT":
+        break
+    elif company in tickerSymbol:
         print(
             f"Enter a symbol: {company}\n"
             f"Company: {DOWdict[company][0]}\n"
             f"Industry: {DOWdict[company][3]}\n"
             f"Exhange: {DOWdict[company][2]}\n"
             f"Growth in 2013: {((float(DOWdict[company][5])/float(DOWdict[company][4]))-1) * 100:.2f}%\n"
-            f"Price/Earnings ratio in 2013: {float(DOWdict[company][5])/float(DOWdict[company][6]):.2f}"
+            f"Price/Earnings ratio in 2013: {float(DOWdict[company][5])/float(DOWdict[company][6]):.2f}\n"
         )
     else:
         print("Only enter ticker symbols from the menu.\n\n")
