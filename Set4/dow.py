@@ -34,8 +34,33 @@ tickerList = []
 
 with open("data/dow.txt") as file:
     for line in file:
-        ticker = line.strip()
-        tickerList.append(ticker)
+        currentline = line.split(',')
+        tickerList.append(currentline)
+
+# print(tickerList[0][1])
+
+for i in range(1, 4):
+    for j in range (10):
+        print(f"{tickerList[(j)*i][1]}\t")
+    print()
+# %%
+rows = []
+fields = []
+
+with open("data/dow.txt") as file:
+    for row in file:
+        rows.append(row)
+for row in rows[:5]:
+    for col in row:
+        print(f"{col}\t")
+    # print(tickerList)
+# %%
+tickerList = []
+
+with open("data/dow.txt") as file:
+    for line in file:
+        currentline = line.split(',')
+        tickerList.append(currentline)
 
 print(tickerList)
 # %%
