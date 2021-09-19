@@ -17,11 +17,29 @@ For example, "racecar," "Madam, I'm Adam," and "Anna."
 
 # AUTHOR:     Trent Brunson
 # COURSE:     ANLY 615
-# PROGRAM:    Letter e counter
-# PURPOSE:    Count the letter e in a string.
-# INPUT:      user string of characters
-# PROCESS:    treat the input string as a list of characters
-# OUTPUT:     number of e's in the input
+# PROGRAM:    Palindrome
+# PURPOSE:    Identify if the two inputs meet the criteria of a palindrome.
+# INPUT:      User input two strings of words or phrases.
+# PROCESS:    Strip puntucation and spaces.  Reverse order of second input and compare.
+# OUTPUT:     If true, display acknowledgement that inputs are a palindrome, otherwise, no.
 # HONOR CODE: On my honor, as an Aggie, I have neither given 
 #             nor received unauthorized aid on this academic work.
 #%%
+print("This program determines if your inputs are plaindromes.")
+
+s1 = str(input("Enter your first word or phrase: "))
+s2 = str(input("Enter your second word or phrase: "))
+# Replace special characters with ''
+s1Stripped = list(''.join(ch for ch in s1 if ch.isalnum()))
+# s2Stripped = list(''.join(ch for ch in s2 if ch.isalnum()))
+s2RevStripped = list(reversed(''.join(ch for ch in s2 if ch.isalnum())))
+
+# s2RevStripped = list(reversed(s2Stripped))
+
+if s1Stripped == s2RevStripped:
+    print(
+        f"Your words {s1} and {s2} are a palindrome."
+    )
+else: print(f"You do not have a palindrome.")
+print(s2RevStripped)
+# %%
