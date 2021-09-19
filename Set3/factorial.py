@@ -44,9 +44,9 @@ def number():
     return num
 
 def factorial(factorNum):
-    i = factorNum
+    i = factorNum - 1
     while i > 1:
-        factorNum *= (i - 1)
+        factorNum *= i
         i -= 1
     return factorNum
 
