@@ -45,8 +45,11 @@ def output(out1, out2):
         )
 
 def main():
-    user1, user2 = get_strings()
-    output(user1, user2)
+    choice = "Y"
+    while choice.upper() == "Y":
+        user1, user2 = get_strings()
+        output(user1, user2)
+        choice = input("Continue? (Y/N) ")
 
 if __name__ == "__main__":
     main()
