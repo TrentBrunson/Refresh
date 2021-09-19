@@ -30,8 +30,7 @@ while choice.upper() == "Y":
         for i in range (length//3):
             i = 3
 
-    
-    units = [" ", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion"]
+    units = "septillion sextillion septillion quadrillion trillion billion million thousand".split()
 
     # numberslicer = numberStr[-3:]
     # print(numberslicer)
@@ -86,3 +85,4 @@ print(numberslicer, backwards)
 # %%
 (12345678912//1000000000) % 100
 # %%
+12 // 100
