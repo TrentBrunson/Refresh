@@ -66,8 +66,8 @@ def palindrome(p1, p2, s1, s2):
 
 def main():
     choice = "Y"
+    print("This program determines if your inputs are plaindromes.")
     while choice.upper() == "Y":
-        print("This program determines if your inputs are plaindromes.")
         user1, user2 = get_words()
         noSpecial1, noSpecial2 = alpha_num_word(user1, user2)
         palindrome(noSpecial1, noSpecial2, user1, user2)
