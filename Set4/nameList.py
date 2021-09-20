@@ -12,6 +12,35 @@
 # HONOR CODE: On my honor, as an Aggie, I have neither given 
 #             nor received unauthorized aid on this academic work.
 #%%
+nameList, nameListUpper = [], []
+
+print(
+    f"This program will tell you if your entered name already exists in the list.\n"
+    f"If not, it will add it to a list."
+)
+with open("data/names.txt") as file:
+    for line in file:
+        nameList.append(line)
+        line = line.upper()
+        nameListUpper.append(line) # create list for comparison
+
+print(*nameList, '\n\n')
+print(*nameListUpper)
+type(nameList)
+name = input("Enter first name:")
+
+if name.upper() in nameList:
+    print(f"{name} already exists.")
+else:
+    with open("data/NewNames.txt", "w") as newF:
+        nameList.append(f"{name}\n")
+        nameList.sort()
+        newF.writelines("%s" % item for item in nameList)
+    print(
+        f"Your {name} did not appear in the list.\n"
+        f"Your {name} name as been added to the NewNames.txt file."
+        )
+# %%
 nameList = []
 
 print(
@@ -23,12 +52,8 @@ with open("data/names.txt") as file:
         line = line.upper()
         nameList.append(line)
 
-name = input("Enter first name:")
-
-if name.upper() in nameList:
-    print(f"{name} already exists.")
-else:
-    with open("data/NewNames.txt", "r+") as newF:
-        newF.write(f"{name}\n")
-    print(f"Your {name} name as been added to the NewNames.txt file.")
+print(*nameList)
+type(nameList)
+nameList.sort()
+print(nameList)
 # %%
