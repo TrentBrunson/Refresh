@@ -11,7 +11,7 @@
 # OUTPUT:     Report to user on screen and create new file with new names.
 # HONOR CODE: On my honor, as an Aggie, I have neither given 
 #             nor received unauthorized aid on this academic work.
-#%%
+# %%
 nameList, nameListUpper = [], []
 
 print(
@@ -20,28 +20,25 @@ print(
 )
 with open("data/names.txt") as file:
     for line in file:
+        line = line.strip()
         nameList.append(line)
-        line = line.upper()
-        nameListUpper.append(line) # create list for comparison
+        
+name = input("Enter first name:").capitalize()
 
-print(*nameList, '\n\n')
-print(*nameListUpper)
-type(nameList)
-name = input("Enter first name:")
-
-if name.upper() in nameList:
+if name in nameList:
     print(f"{name} already exists.")
 else:
     with open("data/NewNames.txt", "w") as newF:
         nameList.append(f"{name}\n")
         nameList.sort()
-        newF.writelines("%s" % item for item in nameList)
+        # use generator expression for large file sizes; writes piece-wise (https://www.delftstack.com/howto/python/python-writelines/)
+        newF.writelines("%s" % item for item in nameList) 
     print(
-        f"Your {name} did not appear in the list.\n"
-        f"Your {name} name as been added to the NewNames.txt file."
+        f"Your name {name} did not appear in the list.\n"
+        f"Your name {name} has been added to the NewNames.txt file."
         )
 # %%
-nameList = []
+nameList, nameListUpper = [], []
 
 print(
     f"This program will tell you if your entered name already exists in the list.\n"
@@ -49,11 +46,22 @@ print(
 )
 with open("data/names.txt") as file:
     for line in file:
-        line = line.upper()
+        line = line.strip()
         nameList.append(line)
+        # nameListUpper.append(line) # create list for comparison
 
-print(*nameList)
-type(nameList)
-nameList.sort()
-print(nameList)
+name = input("Enter first name:").capitalize()
+
+if name in nameList:
+    print(f"{name} already exists.")
+else:
+    with open("data/NewNames.txt", "w") as newF:
+        nameList.append(f"{name}\n")
+        nameList.sort()
+        # use generator expression for large file sizes; writes piece-wise (https://www.delftstack.com/howto/python/python-writelines/)
+        newF.writelines("%s" % item for item in nameList) 
+    print(
+        f"Your name {name} did not appear in the list.\n"
+        f"Your name {name} has been added to the NewNames.txt file."
+        )
 # %%
