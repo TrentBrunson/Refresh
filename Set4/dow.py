@@ -2,11 +2,13 @@
 
 # AUTHOR:     Trent Brunson
 # COURSE:     ANLY 615
-# PROGRAM:    Palindrome
-# PURPOSE:    Identify if the two inputs meet the criteria of a palindrome.
-# INPUT:      User input two strings of words or phrases.
-# PROCESS:    Strip puntucation and spaces.  Reverse order of second input and compare.
-# OUTPUT:     If true, display acknowledgement that inputs are a palindrome, otherwise, no.
+# PROGRAM:    DOW Report
+# PURPOSE:    Extract values from file and display to user on screen.
+# INPUT:      User selects DOW ticker symbol from screen menu.
+# PROCESS:    Import data file.  Create and display on screen menu of choices.
+#             Create dictionary with ticker symbol as key.  Display output.  
+#             Handle exceptions.
+# OUTPUT:     Use validated input to print report to screen.
 # HONOR CODE: On my honor, as an Aggie, I have neither given 
 #             nor received unauthorized aid on this academic work.
 
