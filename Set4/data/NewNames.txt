@@ -9,6 +9,7 @@ Barbara
 Bernard
 Bobbie
 Bruce
+Byr
 Candace
 Carlos
 Carol
@@ -89,7 +90,6 @@ Susan
 Terrence
 Thomas
 Timothy
-Trent
 Troy
 Valorie
 Vincent

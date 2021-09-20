@@ -32,10 +32,10 @@ else:
         nameList.append(f"{name}")
         nameList.sort()
         # use generator expression for large file sizes; writes piece-wise (https://www.delftstack.com/howto/python/python-writelines/)
-        newF.writelines("%s" % item for item in nameList) 
+        newF.writelines("%s\n" % item for item in nameList) 
     print(
-        f"Your name {name} did not appear in the list.\n"
-        f"Your name {name} has been added to the NewNames.txt file."
+        f"Your name {name}, did not appear in the list.\n"
+        f"Your name {name}, has been added to the NewNames.txt file."
         )
 # %%
 nameList, nameListUpper = [], []
@@ -48,7 +48,6 @@ with open("data/names.txt") as file:
     for line in file:
         line = line.strip()
         nameList.append(line)
-        # nameListUpper.append(line) # create list for comparison
 
 name = input("Enter first name:").capitalize()
 
@@ -61,7 +60,7 @@ else:
         # use generator expression for large file sizes; writes piece-wise (https://www.delftstack.com/howto/python/python-writelines/)
         newF.writelines("%s\n" % item for item in nameList) 
     print(
-        f"Your name {name} did not appear in the list.\n"
-        f"Your name {name} has been added to the NewNames.txt file."
+        f"Your name {name}, did not appear in the list.\n"
+        f"Your name {name}, has been added to the NewNames.txt file."
         )
 # %%
