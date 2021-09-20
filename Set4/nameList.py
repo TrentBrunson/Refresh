@@ -37,30 +37,3 @@ else:
         f"Your name {name}, did not appear in the list.\n"
         f"Your name {name}, has been added to the NewNames.txt file."
         )
-# %%
-nameList, nameListUpper = [], []
-
-print(
-    f"This program will tell you if your entered name already exists in the list.\n"
-    f"If not, it will add it to a list."
-)
-with open("data/names.txt") as file:
-    for line in file:
-        line = line.strip()
-        nameList.append(line)
-
-name = input("Enter first name:").capitalize()
-
-if name in nameList:
-    print(f"{name} already exists.")
-else:
-    with open("data/NewNames.txt", "w") as newF:
-        nameList.append(f"{name}")
-        nameList.sort()
-        # use generator expression for large file sizes; writes piece-wise (https://www.delftstack.com/howto/python/python-writelines/)
-        newF.writelines("%s\n" % item for item in nameList) 
-    print(
-        f"Your name {name}, did not appear in the list.\n"
-        f"Your name {name}, has been added to the NewNames.txt file."
-        )
-# %%
