@@ -33,6 +33,7 @@ Eugene
 Frank
 Fred
 George
+Git
 Grace
 Greg
 Harold
@@ -89,7 +90,6 @@ Susan
 Terrence
 Thomas
 Timothy
-Trent
 Troy
 Valorie
 Vincent

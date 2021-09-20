@@ -37,3 +37,4 @@ else:
         f"Your name {name}, did not appear in the list.\n"
         f"Your name {name}, has been added to the NewNames.txt file."
         )
+# %%
