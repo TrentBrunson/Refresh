@@ -65,4 +65,3 @@ else:
         f"Your name {name} has been added to the NewNames.txt file."
         )
 # %%
-# test
