@@ -12,8 +12,6 @@
 # HONOR CODE: On my honor, as an Aggie, I have neither given 
 #             nor received unauthorized aid on this academic work.
 # %%
-from typing import Counter
-
 roses = []
 file = "data/Rosebowl.txt"
 
@@ -21,9 +19,6 @@ with open(file) as f:
     for line in f:
         line = line.strip()
         roses.append(line)
-
-# use Counter method from typing module
-wins = Counter(roses)
 
 winDict = {}
 for i in range(len(roses)):
@@ -36,16 +31,22 @@ for i in range(len(roses)):
     if team not in winDict.keys():
         winDict.update(winCount)
 
-print(sorted(winDict, reverse=True))
-print(winDict)
 # find teams with 4 or more wins
 win4 = {k:v for (k,v) in winDict.items() if v >= 4}
-print(win4)
 sortedWins = sorted(win4.items(), reverse=True, key = lambda kv:kv[1])
-print(sortedWins)
-for team in sortedWins:
-    print(f"{team}     {sortedWins[team]}")
 
+# print(*sortedWins)
+print(
+    f"Teams with more than 4 wins at the Rose Bowl:\n"
+    f"Team\t\t    Wins"
+)
+
+for team in win4:
+    print(f"{team: <20}{win4[team]:<20}")
+
+with open("data/Rosewinners.txt", "w") as newF:
+    for k, v in winDict.items():
+        newF.writelines(f"{k},{v}\n")
 # %%
 from typing import Counter
 
@@ -82,11 +83,12 @@ print(win4)
 winner = list(win4.keys())
 winner.sort(reverse=True)
 
-for w in winner:
-    print(f"{win4[w]}     {w}")
+# print sorted dictionary
+# for w in winner:
+#     print(f"{win4[w]}     {w}")
 
 for team in win4.keys():
-    print(f"{team}     {winDict[team]}")
+    print(f"{team}\t\t{winDict[team]}")
 
 print(sorted(win4.items(), reverse=True, key = lambda kv:kv[1]))
 # %%

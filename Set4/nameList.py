@@ -33,6 +33,7 @@ else:
         nameList.sort()
         # use generator expression for large file sizes; writes piece-wise (https://www.delftstack.com/howto/python/python-writelines/)
         newF.writelines("%s\n" % item for item in nameList) 
+        # newF.writelines("%s\n" % item for item in nameList) 
     print(
         f"Your name {name}, did not appear in the list.\n"
         f"Your name {name}, has been added to the NewNames.txt file."
