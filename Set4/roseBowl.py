@@ -22,11 +22,8 @@ with open(file) as f:
         line = line.strip()
         roses.append(line)
 
-# print(roses)
-
 # use Counter method from typing module
 wins = Counter(roses)
-print(wins)
 
 winDict = {}
 for i in range(len(roses)):
@@ -41,9 +38,14 @@ for i in range(len(roses)):
 
 print(sorted(winDict, reverse=True))
 print(winDict)
-
+# find teams with 4 or more wins
 win4 = {k:v for (k,v) in winDict.items() if v >= 4}
 print(win4)
+sortedWins = sorted(win4.items(), reverse=True, key = lambda kv:kv[1])
+print(sortedWins)
+for team in sortedWins:
+    print(f"{team}     {sortedWins[team]}")
+
 # %%
 from typing import Counter
 
@@ -55,8 +57,6 @@ with open(file) as f:
         line = line.strip()
         roses.append(line)
 
-# print(roses)
-
 # use Counter method from typing module
 wins = Counter(roses)
 print(wins)
@@ -72,9 +72,21 @@ for i in range(len(roses)):
     if team not in winDict.keys():
         winDict.update(winCount)
 
-print(sorted(winDict, reverse=True))
-print(winDict)
+# print(sorted(winDict, reverse=True))
+# print(winDict)
 
+# find teams with 4 or more wins using dict comprehension
 win4 = {k:v for (k,v) in winDict.items() if v >= 4}
 print(win4)
+
+winner = list(win4.keys())
+winner.sort(reverse=True)
+
+for w in winner:
+    print(f"{win4[w]}     {w}")
+
+for team in win4.keys():
+    print(f"{team}     {winDict[team]}")
+
+print(sorted(win4.items(), reverse=True, key = lambda kv:kv[1]))
 # %%
