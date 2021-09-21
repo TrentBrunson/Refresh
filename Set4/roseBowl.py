@@ -42,7 +42,7 @@ print(
 )
 
 for team in win4:
-    print(f"{team: <20}{win4[team]:<20}")
+    print(f"{team:<20}{win4[team]:<20}")
 
 with open("data/Rosewinners.txt", "w") as newF:
     for k, v in winDict.items():
