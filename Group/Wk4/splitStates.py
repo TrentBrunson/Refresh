@@ -6,6 +6,7 @@
 
 def read_file_to_list():
     filePath = "Group\Wk4\SomeStates.txt"
+    # filePath2 = "SomeStates.txt"
     with open(filePath, "r") as infile:
         states = [line.rstrip() for line in infile]
         return states
