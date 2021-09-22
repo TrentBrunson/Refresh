@@ -76,7 +76,6 @@ while choice.upper() == "Y":
     choice = input("Would you like to make another selection? (Y/N) ")
 # %%
 # iterate through rows of txt file and print to screen
-
 tickerList = []
 tickerSymbol = []
 DOWdict = {}
@@ -123,6 +122,7 @@ def dow_calc(tickerList, tickerSymbol):
         else:
             print("Only enter ticker symbols from the menu.\n\n")
             continue
+        menu(tickerSymbol)
         choice = input("Would you like to make another selection? (Y/N) ")
 
 def main():
