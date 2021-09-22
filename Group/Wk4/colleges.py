@@ -27,20 +27,21 @@ def find_colleges(state, collegeList):
         collegeList[i] = collegeList[i].split(",")
         collegeList[i][2] = int(collegeList[i][2]) # change year to int for sorting
     collegeList.sort(key=lambda college: college[2]) #sort by year
+    print(collegeList)
     
     for college in collegeList:
         if college[1] == state:
-            outputList.append([collegeList[0], collegeList[2]])
-            print(*collegeList[0], *collegeList[2])
+            print(*college, state)
+            outputList.append(college)
             found = True
-    outputList.sort()
     print(outputList)
     if not found:
         print(f"There are no early colleges from {state}.")
     return outputList
 
 def display_results(printList):
-    print(printList)
+    for i in range(len(printList)):
+        print(f"{printList[i][0]}\t{printList[i][2]}")
 
 def main():
     display_header()
