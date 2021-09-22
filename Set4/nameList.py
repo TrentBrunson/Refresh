@@ -12,6 +12,10 @@
 # HONOR CODE: On my honor, as an Aggie, I have neither given 
 #             nor received unauthorized aid on this academic work.
 # %%
+from os import name
+from Set4.dow import get_data_to_list
+
+
 nameList, nameListUpper = [], []
 
 print(
@@ -23,19 +27,58 @@ with open("data/names.txt") as file:
         line = line.strip()
         nameList.append(line)
         
-name = input("Enter first name:").capitalize()
+inputName = input("Enter first name:").capitalize()
 
-if name in nameList:
-    print(f"{name} already exists.")
+if inputName in nameList:
+    print(f"{inputName} already exists.")
 else:
     with open("data/NewNames.txt", "w") as newF:
-        nameList.append(f"{name}")
+        nameList.append(f"{inputName}")
         nameList.sort()
         # use generator expression for large file sizes; writes piece-wise (https://www.delftstack.com/howto/python/python-writelines/)
         newF.writelines("%s\n" % item for item in nameList) 
         # newF.writelines("%s\n" % item for item in nameList) 
     print(
-        f"Your name {name}, did not appear in the list.\n"
-        f"Your name {name}, has been added to the NewNames.txt file."
+        f"Your name {inputName}, did not appear in the list.\n"
+        f"Your name {inputName}, has been added to the NewNames.txt file."
         )
+# %%
+# nameList, nameListUpper = [], []
+def get_data_to_list():
+    print(
+        f"This program will tell you if your entered name already exists in the list.\n"
+        f"If not, it will add it to a list."
+    )
+    with open("data/names.txt") as file:
+        for line in file:
+            line = line.strip()
+            nameList.append(line)
+    return nameList
+
+def user_input():
+    name = input("Enter first name:").capitalize()
+    return name
+
+def update_list_screen(inputName, nameList):
+    if inputName in nameList:
+        print(f"{inputName} already exists.")
+    else:
+        with open("data/NewNames.txt", "w") as newF:
+            nameList.append(f"{inputName}")
+            nameList.sort()
+            # use generator expression for large file sizes; writes piece-wise (https://www.delftstack.com/howto/python/python-writelines/)
+            newF.writelines("%s\n" % item for item in nameList) 
+            # newF.writelines("%s\n" % item for item in nameList) 
+        print(
+            f"Your name {inputName}, did not appear in the list.\n"
+            f"Your name {inputName}, has been added to the NewNames.txt file."
+            )
+
+def main():
+    names = get_data_to_list()
+    searchName = user_input()
+    update_list_screen(searchName, names)
+
+if __name__ == "__main__":
+    main()
 # %%
