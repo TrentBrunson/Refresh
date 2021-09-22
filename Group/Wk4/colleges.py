@@ -16,13 +16,14 @@ def display_header():
     )
 
 def user_input():
-    twoLtrState = input("Enter the two-letter abbreviation for the state: ")
+    twoLtrState = input("Enter the two-letter abbreviation for the state: ").upper()
     return twoLtrState
 
 def find_colleges(state, collegeList):
     outputList = []
-    for state in collegeList:
+    for state in collegeList[1]:
         outputList.append(state)
+    outputList.sort()
     return outputList
 
 def display_results():
@@ -32,8 +33,9 @@ def main():
     display_header()
     stateCollege = read_file_to_list()
     choice = user_input()
-    find_colleges(choice, stateCollege)
-    display_results()
+    screenList = find_colleges(choice, stateCollege)
+    print(screenList)
+    display_results(screenList)
 
 if __name__ == "__main__":
     main()
