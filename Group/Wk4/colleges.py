@@ -17,7 +17,6 @@ def display_header():
 
 def user_input():
     twoLtrState = input("Enter the two-letter abbreviation for the state: ").upper()
-    print(twoLtrState)
     return twoLtrState
 
 def find_colleges(state, collegeList):
@@ -27,28 +26,26 @@ def find_colleges(state, collegeList):
         collegeList[i] = collegeList[i].split(",")
         collegeList[i][2] = int(collegeList[i][2]) # change year to int for sorting
     collegeList.sort(key=lambda college: college[2]) #sort by year
-    print(collegeList)
     
     for college in collegeList:
         if college[1] == state:
-            print(*college, state)
             outputList.append(college)
             found = True
-    print(outputList)
     if not found:
         print(f"There are no early colleges from {state}.")
+    else:
+        print(f"The colleges founded before 1800 in {state}: ")
     return outputList
 
 def display_results(printList):
     for i in range(len(printList)):
-        print(f"{printList[i][0]}\t{printList[i][2]}")
+        print(f"{printList[i][0]:<20}{printList[i][2]:>6}")
 
 def main():
     display_header()
     stateCollege = read_file_to_list()
     choice = user_input()
     screenList = find_colleges(choice, stateCollege)
-    print(screenList)
     display_results(screenList)
 
 if __name__ == "__main__":
