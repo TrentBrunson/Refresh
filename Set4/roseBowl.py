@@ -12,20 +12,20 @@
 # HONOR CODE: On my honor, as an Aggie, I have neither given 
 #             nor received unauthorized aid on this academic work.
 # %%
-roses = []
+roseWins = []
 file = "data/Rosebowl.txt"
 
 with open(file) as f:
     for line in f:
         line = line.strip()
-        roses.append(line)
+        roseWins.append(line)
 
 winDict = {}
-for i in range(len(roses)):
-    team = roses[i]
+for i in range(len(roseWins)):
+    team = roseWins[i]
     count = 0
-    for j in range(i, len(roses)):
-        if roses[j] == roses[i]:
+    for j in range(i, len(roseWins)):
+        if roseWins[j] == roseWins[i]:
             count += 1
     winCount = {team:count}
     if team not in winDict.keys():
@@ -50,31 +50,28 @@ with open("data/Rosewinners.txt", "w") as newF:
 # %%
 from typing import Counter
 
-roses = []
+roseWins = []
 file = "data/Rosebowl.txt"
 
 with open(file) as f:
     for line in f:
         line = line.strip()
-        roses.append(line)
+        roseWins.append(line)
 
 # use Counter method from typing module
-wins = Counter(roses)
+wins = Counter(roseWins)
 print(wins)
 
 winDict = {}
-for i in range(len(roses)):
-    team = roses[i]
+for i in range(len(roseWins)):
+    team = roseWins[i]
     count = 0
-    for j in range(i, len(roses)):
-        if roses[j] == roses[i]:
+    for j in range(i, len(roseWins)):
+        if roseWins[j] == roseWins[i]:
             count += 1
     winCount = {team:count}
     if team not in winDict.keys():
         winDict.update(winCount)
-
-# print(sorted(winDict, reverse=True))
-# print(winDict)
 
 # find teams with 4 or more wins using dict comprehension
 win4 = {k:v for (k,v) in winDict.items() if v >= 4}
@@ -83,12 +80,56 @@ print(win4)
 winner = list(win4.keys())
 winner.sort(reverse=True)
 
-# print sorted dictionary
-# for w in winner:
-#     print(f"{win4[w]}     {w}")
-
 for team in win4.keys():
     print(f"{team}\t\t{winDict[team]}")
 
 print(sorted(win4.items(), reverse=True, key = lambda kv:kv[1]))
+# %%
+def read_file_to_list():
+    roses = []
+    file = "data/Rosebowl.txt"
+
+    with open(file) as f:
+        for line in f:
+            line = line.strip()
+            roses.append(line)
+    return roses
+
+def win_counter(roseWins):
+    winDict = {}
+    for i in range(len(roseWins)):
+        team = roseWins[i]
+        count = 0
+        for j in range(i, len(roseWins)):
+            if roseWins[j] == roseWins[i]:
+                count += 1
+        winCount = {team:count}
+        if team not in winDict.keys():
+            winDict.update(winCount)
+    # find teams with 4 or more wins
+    win4 = {k:v for (k,v) in winDict.items() if v >= 4}
+    # make dictionary into list so it prints nicer
+    sortedWins = sorted(win4.items(), reverse=True, key = lambda kv:kv[1])
+    return team, winDict, win4
+
+def results_output(team, winDict, win4):
+    print(
+        f"Teams with more than 4 wins at the Rose Bowl:\n"
+        f"Team\t\t    Wins"
+    )
+
+    for team in win4:
+        print(f"{team:<20}{win4[team]:<20}")
+
+    with open("data/Rosewinners.txt", "w") as newF:
+        for k, v in winDict.items():
+            newF.writelines(f"{k},{v}\n")
+
+def main():
+    roseWinners = read_file_to_list()
+    teams, wins, fourWins = win_counter(roseWinners)
+    results_output(teams, wins, fourWins)
+
+if __name__ == "__main__":
+    main()
 # %%
