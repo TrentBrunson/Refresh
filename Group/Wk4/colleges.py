@@ -12,18 +12,24 @@ def display_header():
     # tell user what the program does
     print(
         f"User inputs 2-letter state abbreviation and program returns\n"
-        f"colleges in that state with years founded, sorted by founding year.\n"
+        f"colleges founded before 1800 in that state, sorted by founding year.\n"
     )
 
 def user_input():
     twoLtrState = input("Enter the two-letter abbreviation for the state: ").upper()
+    print(twoLtrState)
     return twoLtrState
 
 def find_colleges(state, collegeList):
     outputList = []
-    for state in collegeList[1]:
-        outputList.append(state)
+    found = False
+    for college in collegeList:
+        if college[1] == state:
+            outputList.append(state)
+            found = True
     outputList.sort()
+    if not found:
+        print(f"There are no early colleges from {state}.")
     return outputList
 
 def display_results():
