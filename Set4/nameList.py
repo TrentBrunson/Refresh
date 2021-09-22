@@ -37,7 +37,6 @@ else:
         nameList.sort()
         # use generator expression for large file sizes; writes piece-wise (https://www.delftstack.com/howto/python/python-writelines/)
         newF.writelines("%s\n" % item for item in nameList) 
-        # newF.writelines("%s\n" % item for item in nameList) 
     print(
         f"Your name {inputName}, did not appear in the list.\n"
         f"Your name {inputName}, has been added to the NewNames.txt file."
@@ -68,7 +67,6 @@ def update_list_screen(inputName, nameList):
             nameList.sort()
             # use generator expression for large file sizes; writes piece-wise (https://www.delftstack.com/howto/python/python-writelines/)
             newF.writelines("%s\n" % item for item in nameList) 
-            # newF.writelines("%s\n" % item for item in nameList) 
         print(
             f"Your name {inputName}, did not appear in the list.\n"
             f"Your name {inputName}, has been added to the NewNames.txt file."
