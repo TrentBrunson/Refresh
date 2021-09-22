@@ -2,18 +2,18 @@
 # list1 for state names starting with a consonant
 # list2 for state names starting with a vowel
 
-from os import write
-
+# from os import write
 
 def read_file_to_list():
-    with open("SomeStates.txt", "r") as infile:
+    filePath = "Group\Wk4\SomeStates.txt"
+    with open(filePath, "r") as infile:
         states = [line.rstrip() for line in infile]
         return states
 
 def display_header():
     # tell user what the program does
     print(
-        f"Creating two list of US state names.\n"
+        f"Creating two lists of US state names.\n"
         f"One list of states having names starting with a vowel.\n"
         f"Second list of states having names starting with a consonant\n"
     )
@@ -23,7 +23,7 @@ def split_states(states):
     vowelStates = []
     consonantStates = []
     for state in states:
-        if state[0].lower in vowels:
+        if state[0].lower() in vowels:
             vowelStates.append(state)
         else:
             consonantStates.append(state)
