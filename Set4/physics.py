@@ -2,7 +2,7 @@
 
 # AUTHOR:     Trent Brunson
 # COURSE:     ANLY 615
-# PROGRAM:    Rate of Change of Velocity Physics
+# PROGRAM:    Rate of Change of Velocity - Physics
 # PURPOSE:    Predict parametrics of a thrown object.
 # INPUT:      Starting height and velocity.
 # PROCESS:    Assume object is thrown in a vacuum and that object is a spherical chicken.
