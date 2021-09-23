@@ -136,7 +136,7 @@ def outputs(table, height, velocity, apex, time, fallTime):
         f"Total distance traveled: {2*apex} feet"
         )
     
-    with open("object-trajectory.txt", "w") as f:
+    with open("data/object-trajectory.txt", "w") as f:
         f.writelines(f"Your starting parameters:\nHeight: {height} feet\nStarting velocity: {velocity} ft/sec\n")
         f.writelines(f"{'Time':<15}{'Actual Height':<15}{'Total Distance':<15}\n")
         for row in table:
