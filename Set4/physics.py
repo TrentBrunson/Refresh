@@ -57,12 +57,6 @@ for time in [t/10 for t in range(0, int(round(timeToFall*10)))]:
     if descHeight < 0:
         break
     time += 0.1
-# while apexHeight > 0:
-#     apexHeight -= velocity * time
-#     for time in range(0, int(round(timeToFall * 10))):
-#         velocity = time * 32
-#         time += 0.1|
-#         descentTable.append([time, velocity, apexHeight])
 
 print(*descentTable)
 print("\n\n")
@@ -116,17 +110,18 @@ def chicken_up(startH, startV):
     apex = hOFt + startH
     return apex, tableUp
 
-def chicken_down(crest, finaltable):
+def chicken_down(crest, finaltable, ttf):
     """
     Time, distance and height for a spherical chicken falling in a vacuum.
     """
+    t = 0
     tableDown = []
     # use list comprehension to step through in increments of 0.1 
     # or increase everything by 10 in the range and divide the functions by 10
-    for time in [t/10 for t in range(0, int(round(timeToFall*10)))]:
+    for time in [t/10 for t in range(0, int(round(ttf*10)))]:
         velocity = time * 32
         heightDelta = velocity * time
-        descHeight = apexHeight-(heightDelta)
+        descHeight = crest-(heightDelta)
         tableDown.append([round(time,1), velocity, descHeight])
         # only add whole seconds to table as to not have different units of output
         if time.is_integer(): 
@@ -135,31 +130,39 @@ def chicken_down(crest, finaltable):
             break
         time += 0.1
     # print(*tableDown)
-    return finaltable
+    return finaltable, time
 
-def outputs(table, height, velocity, apex):
+def outputs(table, height, velocity, apex, time, fallTime):
     print(f"{'Time':<10}{'Actual Height':<20}{'Total Distance':<20}")
     for i in range(len(table)):
         print(f"{int(table[i][0]):<10}{table[i][1]:<20}{table[i][2]:<20}")
     print(f"Your starting parameters:\nHeight: {height} feet\nStarting velocity: {velocity} ft/sec"
-        f"\n\nTotal time: {round(time + timeToFall,3)} seconds, Apex: {apex} feet, "
+        f"\n\nTotal time: {round(time + fallTime,3)} seconds, Apex: {apex} feet, "
         f"Total distance traveled: {2*apex} feet"
         )
     
     with open("object-trajectory.txt", "w") as f:
         f.writelines(f"Your starting parameters:\nHeight: {height} feet\nStarting velocity: {velocity} ft/sec\n")
-        f.writelines(f"{'Time':<10}{'Actual Height':<20}{'Total Distance':<20}\n")
-        for line in table:
-            f.write(f"{line}\n")
-        f.write(f"Total time: {round(time + timeToFall,3)} seconds, Apex: {apex} feet, "
+        f.writelines(f"{'Time':<15}{'Actual Height':<15}{'Total Distance':<15}\n")
+        # for line in table:
+        for row in table:
+            for field in row:
+                f.writelines(f"{field:<15}")
+            f.writelines("\n")        
+        f.write(f"Total time: {round(time + fallTime,3)} seconds, Apex: {apex} feet, "
             f"Total distance traveled: {2*apex} feet"
             )
+    with open("o2.txt", "w") as newF:
+        for row in table:
+            for field in row:
+                newF.writelines(f"{field},")
+            newF.writelines("\n")
 def main():
     ht, vel = get_params()
     peak, upTable = chicken_up(ht, vel)
-    physics_check(peak)
-    fTable = chicken_down(peak, upTable)
-    outputs(fTable, ht, vel, apex)
+    tof, impactV = physics_check(peak)
+    fTable, time = chicken_down(peak, upTable, tof)
+    outputs(fTable, ht, vel, peak, time, tof)
 
 if __name__ == "__main__":
     main()

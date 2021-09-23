@@ -40,6 +40,7 @@ else:
 # %%
 # nameList, nameListUpper = [], []
 def get_data_to_list():
+    nameList = []
     print(
         f"This program will tell you if your entered name already exists in the list.\n"
         f"If not, it will add it to a list."
@@ -48,6 +49,7 @@ def get_data_to_list():
         for line in file:
             line = line.strip()
             nameList.append(line)
+        print(*nameList)
     return nameList
 
 def user_input():
@@ -55,6 +57,7 @@ def user_input():
     return name
 
 def update_list_screen(inputName, nameList):
+    print("\n\n", *nameList)
     if inputName in nameList:
         print(f"{inputName} already exists.")
     else:
