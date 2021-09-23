@@ -14,6 +14,9 @@
 # HONOR CODE: On my honor, as an Aggie, I have neither given 
 #             nor received unauthorized aid on this academic work.
 # %%
+from os import write
+
+
 print(
     f"This program calculates how a spherical chicken thrown upwards in a vacuum\n"
     f"decelerates.  It produces a table of decleration with max height achieved\n"
@@ -23,32 +26,32 @@ height = float(input("Enter the starting height (feet): "))
 velocity = float(input("Enter the initial velocity (feet/second): "))
 
 timeToMaxHeight = velocity/32
-totalDistance = t = index = 0
+totalDistance = t = 0
 table = []
 # {"Time":[], "height":[]}
 # total time flown also equal 2 *  height
 
 for t in range(0, int(round(timeToMaxHeight + 1))):
     hOFt = height + velocity * t - 16 * t ** 2
-    totalDistance += hOFt
+    # totalDistance += hOFt
     # list of lists with time as the key for the output variables
-    table.append([t, hOFt, totalDistance])
+    table.append([t, hOFt, hOFt])
     t += 1
-apex = apexHeight = totalDistance + height
+apex = apexHeight = hOFt + height
 # for item in table:
 timeToFall = (2 * apex / 32) ** 0.5 # SQRT(ft / (ft/sec^2))
 impactVelocity = 32 * timeToFall # (ft/sec^2 *  sec)
 
-print(*table, apex, timeToFall, impactVelocity)
+print(*table, "\n\n", "apex: ", apex, " --time to fall: ", timeToFall, " --impact velocity", impactVelocity, "\n")
 
 descentTable = []
 # use list comprehension to step through in increments of 0.1 
 # or increase everything by 10 in the range and divide the functions by 10
 for time in [t/10 for t in range(0, int(round(timeToFall*10)))]:
-    descvelocity = time * 32
-    heightDelta = descvelocity * time
+    heightDelta = (time ** 2) * 32
     descHeight = apexHeight-(heightDelta)
-    descentTable.append([round(time,1), descvelocity, descHeight])
+    descentTable.append([round(time,1), descHeight, heightDelta])
+    # only add whole seconds to table as to not have different units of output
     if time.is_integer():
         table.append([time+t, round(descHeight,2), round(apex + heightDelta,2)])
     if descHeight < 0:
@@ -58,8 +61,9 @@ for time in [t/10 for t in range(0, int(round(timeToFall*10)))]:
 #     apexHeight -= velocity * time
 #     for time in range(0, int(round(timeToFall * 10))):
 #         velocity = time * 32
-#         time += 0.1
+#         time += 0.1|
 #         descentTable.append([time, velocity, apexHeight])
+
 print(*descentTable)
 print("\n\n")
 print(*table)
@@ -72,8 +76,10 @@ for i in range(len(table)):
     print(f"{int(table[i][0]):<10}{table[i][1]:<20}{table[i][2]:<20}")
 print(f"Your starting parameters:\nHeight: {height} feet\nStarting velocity: {velocity} ft/sec"
     f"\n\nTotal time: {round(time + timeToFall,3)} seconds, Apex: {apex} feet, "
-    f"Total distance traveled: {2*totalDistance+height} feet"
+    f"Total distance traveled: {2*apex} feet"
 )
+# **********************************************************************************
+# **********************************************************************************
 # %%
 def get_params():
     print(
@@ -85,72 +91,75 @@ def get_params():
     velocity = float(input("Enter the initial velocity (feet/second): "))
     return height, velocity
 
-def physics_check(apex, startingVel):
+def physics_check(apex):
     # total time flown also equal 2 * height plus doubled starting height
     timeToFall = (2 * apex / 32) ** 0.5 # SQRT(ft / (ft/sec^2))
     impactVelocity = 32 * timeToFall # (ft/sec^2 *  sec)
+    return timeToFall, impactVelocity
 
 def chicken_up(startH, startV):
     """
     Calculate time, distance and height for a spherical chicken tossed upwards in a vacuum.
     """
-    timeToMaxHeight = velocity/32
-    totalDistance = t = index = 0
-    table = []
-    # {"Time":[], "height":[]}
+    timeToMaxHeight = startV/32
+    t = 0
+    tableUp = []
     
     for t in range(0, int(round(timeToMaxHeight + 1))):
-        hOFt = height + velocity * t - 16 * t ** 2
-        totalDistance += hOFt
+        # formula for height of an object at a given time under a constant
+        # force of deceleration and an initial starting velocity
+        hOFt = startH + startV * t - 16 * t ** 2
         # list of lists with time as the key for the output variables
-        table.append([t, hOFt, totalDistance])
+        # second height for capturing total distance in the descent table
+        tableUp.append([t, hOFt, hOFt])
         t += 1
-    apex = totalDistance + height
-    return apex
+    apex = hOFt + startH
+    return apex, tableUp
 
-def chicken_down(apex):
+def chicken_down(crest, finaltable):
     """
-    Time, distance and height for a spherical chicken tossed in a vacuum.
+    Time, distance and height for a spherical chicken falling in a vacuum.
     """
-    apex = + startHeight
-    descentTable = []
+    tableDown = []
     # use list comprehension to step through in increments of 0.1 
     # or increase everything by 10 in the range and divide the functions by 10
     for time in [t/10 for t in range(0, int(round(timeToFall*10)))]:
         velocity = time * 32
         heightDelta = velocity * time
         descHeight = apexHeight-(heightDelta)
-        descentTable.append([round(time,1), velocity, descHeight])
+        tableDown.append([round(time,1), velocity, descHeight])
         # only add whole seconds to table as to not have different units of output
         if time.is_integer(): 
-            table.append([time+t, round(descHeight,2), round(apex + heightDelta,2)])
+            finaltable.append([time+t, round(descHeight,2), round(crest + heightDelta,2)])
         if descHeight < 0:
             break
         time += 0.1
-    # while apexHeight > 0:
-    #     apexHeight -= velocity * time
-    #     for time in range(0, int(round(timeToFall * 10))):
-    #         velocity = time * 32
-    #         time += 0.1
-    #         descentTable.append([time, velocity, apexHeight])
-    print(*descentTable)
-    return
+    # print(*tableDown)
+    return finaltable
 
-def outputs(table, descentTable):
-    print(f"{'Time':<20}{'Actual Height':<20}{'Total Distance':<20}")
+def outputs(table, height, velocity, apex):
+    print(f"{'Time':<10}{'Actual Height':<20}{'Total Distance':<20}")
     for i in range(len(table)):
-        print(f"{descentTable}")
-        print(*table)
+        print(f"{int(table[i][0]):<10}{table[i][1]:<20}{table[i][2]:<20}")
+    print(f"Your starting parameters:\nHeight: {height} feet\nStarting velocity: {velocity} ft/sec"
+        f"\n\nTotal time: {round(time + timeToFall,3)} seconds, Apex: {apex} feet, "
+        f"Total distance traveled: {2*apex} feet"
+        )
+    
     with open("object-trajectory.txt", "w") as f:
+        f.writelines(f"Your starting parameters:\nHeight: {height} feet\nStarting velocity: {velocity} ft/sec\n")
+        f.writelines(f"{'Time':<10}{'Actual Height':<20}{'Total Distance':<20}\n")
         for line in table:
             f.write(f"{line}\n")
-
-
+        f.write(f"Total time: {round(time + timeToFall,3)} seconds, Apex: {apex} feet, "
+            f"Total distance traveled: {2*apex} feet"
+            )
 def main():
     ht, vel = get_params()
-    chicken_up(ht, vel)
-    chicken_down()
-    outputs()
+    peak, upTable = chicken_up(ht, vel)
+    physics_check(peak)
+    fTable = chicken_down(peak, upTable)
+    outputs(fTable, ht, vel, apex)
 
 if __name__ == "__main__":
     main()

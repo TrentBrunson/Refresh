@@ -12,10 +12,6 @@
 # HONOR CODE: On my honor, as an Aggie, I have neither given 
 #             nor received unauthorized aid on this academic work.
 # %%
-from os import name
-from Set4.dow import get_data_to_list
-
-
 nameList, nameListUpper = [], []
 
 print(
@@ -63,6 +59,7 @@ def update_list_screen(inputName, nameList):
         print(f"{inputName} already exists.")
     else:
         with open("data/NewNames.txt", "w") as newF:
+            # nameList.append(f"{inputName}")
             nameList.append(f"{inputName}")
             nameList.sort()
             # use generator expression for large file sizes; writes piece-wise (https://www.delftstack.com/howto/python/python-writelines/)
