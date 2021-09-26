@@ -110,6 +110,7 @@ def win_counter(roseWins):
     win4 = {k:v for (k,v) in winDict.items() if v >= 4}
     # make dictionary into list so it prints nicer
     sortedWins = sorted(win4.items(), reverse=True, key = lambda kv:kv[1])
+    print(sortedWins)
     return team, winDict, win4
 
 def results_output(team, winDict, win4):
@@ -121,7 +122,7 @@ def results_output(team, winDict, win4):
     for team in win4:
         print(f"{team:<20}{win4[team]:<20}")
 
-    with open("data/Rosewinners.txt", "w") as newF:
+    with open("data/Rosewinners.csv", "w") as newF:
         for k, v in winDict.items():
             newF.writelines(f"{k},{v}\n")
 

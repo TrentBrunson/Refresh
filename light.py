@@ -16,3 +16,40 @@ only perfect squares have odd number of factors
 
 """
 """
+#%%
+lightArray = {}
+i = 0
+for i in range(1, 1001):
+    if i % 2 == 0:
+        lightArray.append{i, "off"}
+# %%
+lightArray = {}
+i = 0
+
+# load initial dictionary with run 1
+while i < 1000:
+    lightArray.update({i+1:"on"})
+    i+=1
+
+# print(lightArray)
+i = 1
+for i in range(1,len(lightArray)):
+    j = i
+    for j in range(j, len(lightArray)):
+        if i % j == 0:
+            if lightArray.values() == "on":
+                switch = {j, 'off'}
+                lightArray.update(switch)
+            else:
+                switch = {j, 'on'}
+                lightArray.update(switch)
+        else: continue
+
+# %%
+testDict = {}
+
+a = input("on or off: ")
+b ={1:a}
+testDict.update(b)
+print(testDict)
+# %%
