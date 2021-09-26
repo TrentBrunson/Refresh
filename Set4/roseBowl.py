@@ -109,27 +109,26 @@ def win_counter(roseWins):
     # find teams with 4 or more wins
     win4 = {k:v for (k,v) in winDict.items() if v >= 4}
     # make dictionary into list so it prints nicer
-    sortedWins = sorted(win4.items(), reverse=True, key = lambda kv:kv[1])
-    print(sortedWins)
-    return team, winDict, win4
+    sortedWins = dict(sorted(win4.items(), reverse=True, key = lambda kv:kv[1]))
+    return team, sortedWins
 
-def results_output(team, winDict, win4):
+def results_output(team, sortedWinsDict):
     print(
         f"Teams with more than 4 wins at the Rose Bowl:\n"
         f"Team\t\t    Wins"
     )
 
-    for team in win4:
-        print(f"{team:<20}{win4[team]:<20}")
+    for team in sortedWinsDict:
+        print(f"{team:<20}{sortedWinsDict[team]:<20}")
 
     with open("data/Rosewinners.csv", "w") as newF:
-        for k, v in winDict.items():
+        for k, v in sortedWinsDict.items():
             newF.writelines(f"{k},{v}\n")
 
 def main():
     roseWinners = read_file_to_list()
-    teams, wins, fourWins = win_counter(roseWinners)
-    results_output(teams, wins, fourWins)
+    teams, wins = win_counter(roseWinners)
+    results_output(teams, wins)
 
 if __name__ == "__main__":
     main()

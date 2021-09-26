@@ -1,0 +1,24 @@
+Time object took to reach maximum height: 2.0 feet
+Maximum height object reached: 70.0 feet
+Object took 2.085 seconds until the object will hit the ground after it is thrown
+Time              Distance Travelled
+2.0 sec        70.0 feet
+1.9 sec        69.84 feet
+1.8 sec        69.36 feet
+1.7 sec        68.56 feet
+1.6 sec        67.44 feet
+1.5 sec        66.0 feet
+1.4 sec        64.24 feet
+1.3 sec        62.16 feet
+1.2 sec        59.76 feet
+1.1 sec        57.04 feet
+1.0 sec        54.0 feet
+0.9 sec        50.64 feet
+0.8 sec        46.96 feet
+0.7 sec        42.96 feet
+0.6 sec        38.64 feet
+0.5 sec        34.0 feet
+0.4 sec        29.04 feet
+0.3 sec        23.76 feet
+0.2 sec        18.16 feet
+0.1 sec        12.24 feet
