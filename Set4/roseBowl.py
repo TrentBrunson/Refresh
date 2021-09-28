@@ -109,7 +109,8 @@ def win_counter(roseWins):
     # find teams with 4 or more wins
     win4 = {k:v for (k,v) in winDict.items() if v >= 4}
     # make dictionary into list so it prints nicer
-    sortedWins = dict(sorted(win4.items(), reverse=True, key = lambda kv:kv[1]))
+    # sort by values then keys; need staged sort to reverse sort for the key column
+    sortedWins = dict(sorted(win4.items(), reverse=True, key = lambda kv:(kv[1],kv[0])))
     return team, sortedWins
 
 def results_output(team, sortedWinsDict):
