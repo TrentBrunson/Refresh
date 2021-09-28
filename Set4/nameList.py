@@ -38,7 +38,6 @@ else:
         f"Your name {inputName}, has been added to the NewNames.txt file."
         )
 # %%
-# nameList, nameListUpper = [], []
 def get_data_to_list():
     nameList = []
     print(
