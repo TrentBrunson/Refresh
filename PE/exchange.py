@@ -67,7 +67,7 @@ def getCountries():
     return country1, country2, amount
 
 def converter(country1, country2, amount, rates):
-    ratesDict = {} #have to convert to dictionary to reference index; jsut passed f(x) as list
+    ratesDict = {} # have to convert to dictionary to reference index; just passed f(x) as list
     # for row in rates:
     for row in range (len(rates)):
         ratesDict[rates[row][0]] = [rates[row][1], rates[row][2]]
