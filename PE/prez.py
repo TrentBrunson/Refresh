@@ -73,7 +73,7 @@ def getInputs():
             print("Your starting number must be less than your ending number.")
             continue
         elif end > 46:
-            print("There are only 45 presidents in this database, enter a value less than 46 please.")
+            print("There are only 46 US presidents in this database, enter a value less than 46 please.")
             continue
         elif start < 1:
             print("You must start with at least the first president; enter a value of 1 to 46.")
