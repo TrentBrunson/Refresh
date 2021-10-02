@@ -4,20 +4,26 @@
 prez = {}
 prezNum = 0
 file = "USPres.txt"
+counter = 1
+start = int(input("Enter start #: "))
+end = int(input("Enter end #: "))
 
 with open(file) as f:
     for line in f:
         prezNum += 1
         line = line.strip()
         prez[prezNum] = line
+# ************************************************      
+        if counter >= start and counter <= end:            
+            print (f"{counter}\t{line.strip()}")            
+            counter += 1        
+        else:            
+            counter += 1
 
-print(type(prez))
-for num in prez.keys():
-    print(f"{num}")
+# print(type(prez))
+# for num in prez.keys():
+#     print(f"{num}")
 # print(prez)
-
-
-
 # %%
 choice = "Y"
 while choice == "Y":
