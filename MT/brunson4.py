@@ -18,7 +18,6 @@ def makeJusticeTable():
             startYr = int(currentLine[4])
             yearsServed = endYr - startYr
             currentLine.extend((yearsServed, lastName))
-            # currentLine.append(lastName)
             justiceTable.append(currentLine)
     return justiceTable
 
@@ -34,7 +33,6 @@ def sortAndFilter(table, state2ltr):
             lineTemp = [temp, l[-1], l[6]]
             newtable.append(lineTemp)
     sortedList = sorted(newtable, key = lambda x: int(x[-1]), reverse=True)
-    # print(sortedList)
     return sortedList
 
 def displayOutput(jt):
@@ -42,7 +40,6 @@ def displayOutput(jt):
         f"{'Justice':25}{'Appointed By':15}{'Yrs Served':10}\n"
         f"**************************************************"
     )
-    # iterate through list of lists; line by line and print each item in line
     for line in jt:
         print(f"{line[0]:25}{line[1]:<10}{line[2]:>10}")
     return
