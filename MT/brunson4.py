@@ -1,24 +1,24 @@
 # Trent Brunson
 # Question 4
-
+#%%
 def makeJusticeTable():
     justiceTable = []
-    file = "MT\justices.txt"
+    file = "justices.txt"
     with open(file) as f:
         for line in f:
             line = line.rstrip()
             currentLine = line.split(',')
             prez = currentLine[2]
             prezSurname = prez.split()
-            lastName = [prezSurname[-1]]
-            startYr = int(currentLine[4])
-            if currentLine[5] == 0:
-                endYr = startYr
-                yearsServed = 0
+            lastName = prezSurname[-1]
+            if currentLine[5] == '0':
+                endYr = 2020
             else:
                 endYr = int(currentLine[5])
+            startYr = int(currentLine[4])
             yearsServed = endYr - startYr
-            currentLine = currentLine + list(str(yearsServed)) + lastName
+            currentLine.extend((yearsServed, lastName))
+            # currentLine.append(lastName)
             justiceTable.append(currentLine)
     return justiceTable
 
@@ -29,23 +29,22 @@ def getInput():
 def sortAndFilter(table, state2ltr):
     newtable = []
     for l in table:
-        for item in l:
-            if state2ltr in item:
-                temp = l[0] + " " + l[1]
-                lineTemp = [temp, l[-1], l[6]]
-                # sortedList = lineTemp.sort()
-                newtable.append(lineTemp)
-    return newtable
+        if state2ltr in l:
+            temp = l[0] + " " + l[1]
+            lineTemp = [temp, l[-1], l[6]]
+            newtable.append(lineTemp)
+    sortedList = sorted(newtable, key = lambda x: int(x[-1]), reverse=True)
+    # print(sortedList)
+    return sortedList
 
 def displayOutput(jt):
     print(
-        f"Justice\t\tAppointed By\tYrs Served\n"
-        f"******************************************"
+        f"{'Justice':25}{'Appointed By':15}{'Yrs Served':10}\n"
+        f"**************************************************"
     )
-    # print(jt)
     # iterate through list of lists; line by line and print each item in line
     for line in jt:
-        print(f"{line[0]}\t{line[1]}\t\t{line[2]}")
+        print(f"{line[0]:25}{line[1]:<10}{line[2]:>10}")
     return
 
 def main():
@@ -56,3 +55,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+# %%
