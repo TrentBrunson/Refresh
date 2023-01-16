@@ -13,9 +13,6 @@ count the number of factors / 2, MOD of 1 says
 only perfect squares have odd number of factors
 '''
 
-
-"""
-"""
 #%%
 lightArray = {}
 i = 0
