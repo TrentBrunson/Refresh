@@ -15,7 +15,7 @@ def foo(n):
             for j in range(n):
                 if arr[j]:
                     baz -= arr[j] // 2
-            baz %= i
+            baz %= (i + 1)
         log_baz = 0
         while True:
             baz = baz // 2
