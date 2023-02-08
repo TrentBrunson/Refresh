@@ -15,7 +15,7 @@ def foo(n):
             for i in range(n):
                 if arr[i]:
                     baz -= arr[i] // 2
-            bax %= i
+            baz %= i
         log_baz = 0
         while True:
             baz = baz // 2
@@ -27,5 +27,5 @@ def foo(n):
     return sum(arr)
 
 if __name__ == "__main__":
-    for in range(0, 300, 25):
+    for i in range(0, 300, 25):
         print(f"foo({i}) = {foo(i)}")
