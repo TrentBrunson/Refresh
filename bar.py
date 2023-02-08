@@ -12,9 +12,9 @@ def foo(n):
     while i >= 0:
         baz = bar(int(i ** 2))
         if len(arr) ** 2 > 1e4:  # apply correction factor
-            for i in range(n):
-                if arr[i]:
-                    baz -= arr[i] // 2
+            for j in range(n):
+                if arr[j]:
+                    baz -= arr[j] // 2
             baz %= i
         log_baz = 0
         while True:
